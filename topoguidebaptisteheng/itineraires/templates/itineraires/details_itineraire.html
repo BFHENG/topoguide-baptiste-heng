@@ -10,8 +10,11 @@
             <th>Par </th>
             <th>Date</th>
             <th>Details</th>
+            
 
         </tr>
+
+        
         </thead>
         <tbody>
         {% for sortie in itineraire.sortie_set.all %}
@@ -19,10 +22,22 @@
                 <td>{{ sortie.nom_utilisateur }}</td>
                 <td>{{ sortie.date_sortie}}</td>
                 <td><li><a href="/itineraires/{{ itineraire.id }}/{{ sortie.id }}/"> Consulter </a></li></td>
+
                 
             </tr>
         {% endfor %}
+
+
         </tbody>
+
+            <tbody>
+
+                    <tr>
+                        <td><li><a href="/itineraires/nouvelle_sortie/"> Nouvelle sortie </a></li></td>
+                        
+                    </tr>
+        
+                </tbody>
     </table>
 </div>
 

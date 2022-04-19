@@ -27,3 +27,16 @@ def details_sortie(request, itineraire_id, sortie_id):
     
     return render(request, 'itineraires/details_sortie.html', {'sortie': sortie})
 
+def nouvelle_sortie(request):
+    
+    if request.method == 'GET':
+        form = SortieForm()
+        
+    elif request.method == 'POST':
+        form = SortieForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('itineraires:liste_itineraires')
+    return render(request, 'itineraires/nouvelle_sortie.html', {'form': form})
+    
+
