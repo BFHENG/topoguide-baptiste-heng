@@ -21,7 +21,7 @@
         <tbody>
         {% for itineraire in liste_itineraires %}
             <tr>
-                <td>{{ itineraire.titre }}</td>
+                <td><li><a href="/itineraires/{{ itineraire.id }}/">{{ itineraire.titre }}</a></li></td>
                 <td>{{ itineraire.duree }}</td>
                 <td>{{ itineraire.difficulte }}</td>
 

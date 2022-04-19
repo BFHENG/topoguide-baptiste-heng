@@ -1,0 +1,28 @@
+
+{% block title %}Sorties  {% endblock title%}
+
+{% block content %}
+
+<div class="row">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Par </th>
+            <th>Date</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for sortie in itineraire.sortie_set.all %}
+            <tr>
+                <td>{{ sortie.nom_utilisateur }}</td>
+                <td>{{ sortie.date_sortie}}</td>
+                
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock content %}

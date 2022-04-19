@@ -62,9 +62,7 @@ class Sortie(models.Model):
         REPOS = 1
         
     difficulte =models.IntegerField(choices=NiveauxDifficulte.choices)
-    
-    def __str__(self):
-        return self.itineraire
+
     
     
     
