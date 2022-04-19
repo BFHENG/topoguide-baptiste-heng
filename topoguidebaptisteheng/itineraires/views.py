@@ -21,4 +21,9 @@ def details_itineraire(request, itineraire_id):
     
     return render(request, 'itineraires/details_itineraire.html', {'itineraire': itineraire})
     
+def details_sortie(request, itineraire_id, sortie_id):
+    
+    sortie = get_object_or_404(Sortie, pk = sortie_id)
+    
+    return render(request, 'itineraires/details_sortie.html', {'sortie': sortie})
 
