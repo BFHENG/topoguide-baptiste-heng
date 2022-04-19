@@ -25,41 +25,34 @@ class Itineraire(models.Model):
 
     difficulte = models.IntegerField(choices=NiveauxDifficulte.choices)
     
+    def __str__(self):
+        return self.titre
+    
 class Sortie(models.Model):
     """
     Une sortie
     """
     nom_utilisateur = models.CharField(max_length=200)
-    itineraire = models.ForeignKey('Album', on_delete=models.CASCADE)
+    itineraire = models.ForeignKey('Itineraire', on_delete=models.CASCADE)
     date_sortie = models.DateTimeField('date sortie')
 
     duree = models.IntegerField('Durée (h)')
     nombre_personnes = models.IntegerField('Nombre de personnes')
     
-    EXPERIENCES = [
-        ('td', 'Tous débutants')
-        ('te', 'Tous experimentés')
-        ('mi', 'Mixte')
-    ]
+    class NiveauxExperience(models.IntegerChoices):
+        DEBUTANTS = 1
+        MIXTE = 2
+        EXPERIMENTES = 3
+        
     
-    experience = models.CharField(
-        max_length=2,
-        choices=EXPERIENCES,
-        default= 'td',
-    )
+    experience = models.IntegerField(choices=NiveauxExperience.choices)
     
-    METEOS = [
-        ('bo', 'Bonne')
-        ('mo', 'Moyenne')
-        ('ma', 'Mauvaise')
-    ]
+    class Meteos(models.IntegerChoices):
+        MAUVAISE = 1
+        MOYENNE = 2
+        BONNE = 3
     
-    meteo = experience = models.CharField(
-        max_length=2,
-        choices=METEOS,
-        default= 'mo',
-    )
-    
+    meteo = models.IntegerField(choices=Meteos.choices)
     
     class NiveauxDifficulte(models.IntegerChoices):
         IMPOSSIBLE = 5
@@ -69,6 +62,9 @@ class Sortie(models.Model):
         REPOS = 1
         
     difficulte =models.IntegerField(choices=NiveauxDifficulte.choices)
+    
+    def __str__(self):
+        return self.itineraire
     
     
     

@@ -1,0 +1,35 @@
+{% block title %}Itineraire {% endblock title%}
+
+
+{% block content %}
+
+<div class="row pb-3">
+    <h2>{{ Itineraire.titre }}</h2>
+</div>
+
+
+<div class="row">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Durée estimée (h)</th>
+            <th>Difficulté estimée (sur 5) </th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for itineraire in liste_itineraires %}
+            <tr>
+                <td>{{ itineraire.titre }}</td>
+                <td>{{ itineraire.duree }}</td>
+                <td>{{ itineraire.difficulte }}</td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock content %}
