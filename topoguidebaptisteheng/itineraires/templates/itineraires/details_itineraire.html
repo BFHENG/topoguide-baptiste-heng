@@ -26,7 +26,6 @@
                         <td>{{ itineraire.point_de_depart }}</td>
                         <td>{{itineraire.alt_min}}</td>
                         <td>{{itineraire.alt_max}}</td>
-
                         <td>{{itineraire.deniv_pos_cumul}}</td>
                         <td>{{itineraire.deniv_neg_cumul}}</td>
                         <td>{{itineraire.deniv_neg_cumul}}</td>
@@ -55,12 +54,13 @@
         <tbody>
         {% for sortie in itineraire.sortie_set.all %}
             <tr>
-                <td>{{ sortie.nom_utilisateur }}</td>
+                <td>{{ sortie.utilisateur.username }}</td> 
                 <td>{{ sortie.date_sortie}}</td>
                 <td><li><a href="/itineraires/{{ itineraire.id }}/{{ sortie.id }}/"> Consulter </a></li></td>
-                <td><li><a href="/itineraires/modif_sortie/{{ sortie.id }}/"> Modifier </a></li></td>
 
-                
+                {% if request.user == sortie.utilisateur %}   {# Fait apparaitre le bouton si l'utilisateur connecté est bien celui qui a enregistré la sortie#}
+                    <td><li><a href="/itineraires/modif_sortie/{{ sortie.id }}/"> Modifier </a></li></td>
+                {% endif  %}
             </tr>
         {% endfor %}
 
