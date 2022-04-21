@@ -1,0 +1,13 @@
+
+{% block title %}Modification sortie{% endblock title%}
+
+{% block content %}
+
+<form action="{% url 'modif_sortie' form.instance.id %}" method="post">
+    {% csrf_token %}
+    
+    {{form}}
+    <input type = "submit"> Modification </button>
+</form>
+
+{% endblock content %}

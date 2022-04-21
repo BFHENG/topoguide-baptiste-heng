@@ -11,5 +11,5 @@ urlpatterns = [
     
     path('nouvelle_sortie/', views.nouvelle_sortie, name = 'nouvelle_sortie'),
     
-    #path('<int:itineraire_id>/', views.modif_sortie, name = 'modif_sortie')
+    path('modif_sortie/<int:sortie_id>/', views.modif_sortie, name = 'modif_sortie')
 ]

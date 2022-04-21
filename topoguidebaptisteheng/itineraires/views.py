@@ -36,4 +36,15 @@ def nouvelle_sortie(request):
             return redirect('itineraires:liste_itineraires')
     return render(request, 'itineraires/nouvelle_sortie.html', {'form': form})
     
+def modif_sortie(request, sortie_id):
+    
+    sortie = Sortie.objects.get(pk=sortie_id)
+    if request.method == 'GET':
+        form = SortieForm(instance=sortie)
+    elif request.method == 'POST':
+        form = SortieForm(request.POST, instance=sortie)
+        if form.is_valid():
+            form.save()
+            return redirect('itineraires:liste_itineraires')
+    return render(request, 'itineraires/modif_sortie.html', {'form': form})
 
