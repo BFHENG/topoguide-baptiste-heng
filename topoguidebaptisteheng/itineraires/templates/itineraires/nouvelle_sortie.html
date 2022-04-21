@@ -1,17 +1,15 @@
-{% extends 'base.html' %}
-{% load bootstrap5 %} {# Yes, load it again even if base loads it #}
+{#{% extends 'base.html' %}#}
+
 
 {% block title %}Creation nouvelle sortie{% endblock title%}
 
 {% block content %}
 
-<form action="{% url 'itineraires: nouvelle_sortie' %}" method="post" class="form">
+<form action="{% url 'nouvelle_sortie' %}" method="post" >
     {% csrf_token %}
-    {% bootstrap_form form %}
-    {% buttons %}
-      <button type="submit" class="btn btn-primary">Add</button>
-      <a href="{% url 'itineraires: nouvelle_sortie' %}" class="btn btn-primary">Cancel</a>
-    {% endbuttons %}
+    
+    {{form}}
+    <input type = "submit"> Add </button>
 </form>
 
 {% endblock content %}
