@@ -5,6 +5,42 @@
 
 <div class="row">
     <table class="table table-striped">
+
+        <thead>
+            <tr>
+                <th>Altitude de départ</th>
+                <th>Altitude minimale</th>
+                <th>Altitude maximale</th>
+                <th>Dénivelé positif cumulé</th>
+                <th>Dénivelé negatif cumulé</th>
+                <th>Durée estimée</th>
+                <th>Difficulté estimée</th>
+            </tr>
+    
+            
+            </thead>
+
+            <tbody>
+                
+                    <tr>
+                        <td>{{ itineraire.point_de_depart }}</td>
+                        <td>{{itineraire.alt_min}}</td>
+                        <td>{{itineraire.alt_max}}</td>
+
+                        <td>{{itineraire.deniv_pos_cumul}}</td>
+                        <td>{{itineraire.deniv_neg_cumul}}</td>
+                        <td>{{itineraire.deniv_neg_cumul}}</td>
+                        <td>{{itineraire.deniv_neg_cumul}}</td>
+                        <td>{{itineraire.duree}}</td>
+                        <td>{{itineraire.difficulte}}</td>
+
+
+                    </tr>
+                
+        
+        
+                </tbody>    
+
         <thead>
         <tr>
             <th>Par </th>
@@ -22,6 +58,7 @@
                 <td>{{ sortie.nom_utilisateur }}</td>
                 <td>{{ sortie.date_sortie}}</td>
                 <td><li><a href="/itineraires/{{ itineraire.id }}/{{ sortie.id }}/"> Consulter </a></li></td>
+                <td><li><a href="/itineraires/modif_sortie/{{ sortie.id }}/"> Modifier </a></li></td>
 
                 
             </tr>
