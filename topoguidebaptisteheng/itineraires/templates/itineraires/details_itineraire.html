@@ -1,5 +1,5 @@
 
-{% block title %}Sorties  {% endblock title%}
+{% block title %}Liste des sorties au {{ itineraire.titre }} {% endblock title%}
 
 {% block content %}
 
@@ -35,9 +35,7 @@
 
 
                     </tr>
-                
-        
-        
+
                 </tbody>    
 
         <thead>
@@ -45,37 +43,55 @@
             <th>Par </th>
             <th>Date</th>
             <th>Details</th>
-            
-
         </tr>
-
         
         </thead>
         <tbody>
+
         {% for sortie in itineraire.sortie_set.all %}
             <tr>
                 <td>{{ sortie.utilisateur.username }}</td> 
                 <td>{{ sortie.date_sortie}}</td>
                 <td><li><a href="/itineraires/{{ itineraire.id }}/{{ sortie.id }}/"> Consulter </a></li></td>
 
-                {% if request.user == sortie.utilisateur %}   {# Fait apparaitre le bouton si l'utilisateur connecté est bien celui qui a enregistré la sortie#}
+                {% if request.user == sortie.utilisateur %}   
+                {# Fait apparaitre le bouton si l'utilisateur connecté est bien celui qui a enregistré la sortie#}
                     <td><li><a href="/itineraires/modif_sortie/{{ sortie.id }}/"> Modifier </a></li></td>
                 {% endif  %}
             </tr>
         {% endfor %}
 
+        </tbody>
+
+        <tbody>
+
+        <tr>
+            {% if request.user.is_authenticated %}  
+                {# Fait apparaitre le bouton Nouvelle Sortie seulement si l'utilisateur est connecté#}
+                <td><li><a href="/itineraires/nouvelle_sortie/"> Nouvelle sortie </a></li></td>
+            {% endif  %}
+        </tr>
 
         </tbody>
 
-            <tbody>
+        <tbody>
 
-                    <tr>
-                        {% if request.user.is_authenticated %}
-                            <td><li><a href="/itineraires/nouvelle_sortie/"> Nouvelle sortie </a></li></td>
-                        {% endif  %}
-                    </tr>
-        
-                </tbody>
+            {% if request.user.is_authenticated != True %}  
+                <td><li><a href="/itineraires/accounts/login/"> Connexion </a></li></td>
+            {% endif  %}    
+
+            {% if request.user.is_authenticated %}  
+                <td><li><a href="/itineraires/accounts/logout/"> Déconnexion </a></li></td>
+            {% endif  %}
+        </tbody>
+
+        <tbody>
+            <tr>
+                {#Bouton de retour #}
+                <td><li><a href="/itineraires/"> >>> Retour à la liste des itinéraires </a></li></td>
+            </tr>
+        </tbody>
+
     </table>
 </div>
 
