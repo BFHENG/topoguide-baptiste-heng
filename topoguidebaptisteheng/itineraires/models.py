@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Itineraire(models.Model):
     """ 
@@ -32,7 +33,8 @@ class Sortie(models.Model):
     """
     Une sortie
     """
-    nom_utilisateur = models.CharField(max_length=200)
+    utilisateur = models.ForeignKey(User, on_delete=models.CASCADE)
+    
     itineraire = models.ForeignKey('Itineraire', on_delete=models.CASCADE)
     date_sortie = models.DateTimeField('date sortie')
 
