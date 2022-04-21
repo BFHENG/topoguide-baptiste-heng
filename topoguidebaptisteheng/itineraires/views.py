@@ -4,8 +4,10 @@ from .models import Itineraire, Sortie
 from django.http import HttpResponse
 from django.template import loader
 from django.contrib.auth.decorators import login_required
-
 from .forms import SortieForm
+
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.forms import AuthenticationForm
 
 def liste_itineraires(request):
     
@@ -52,4 +54,9 @@ def modif_sortie(request, sortie_id):
             form.save()
             return redirect('liste_itineraires')
     return render(request, 'itineraires/modif_sortie.html', {'form': form})
+
+
+def login_view(request):
+    form = AuthenticationForm()
+    return render(request, 'registration/login.html', {'form': form})
 
