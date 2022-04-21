@@ -123,6 +123,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+#Retour à la page d'accueil en cas de connexion ou de déconnexion.
 LOGIN_REDIRECT_URL = '/itineraires/'
 
 LOGOUT_REDIRECT_URL = '/itineraires/'
