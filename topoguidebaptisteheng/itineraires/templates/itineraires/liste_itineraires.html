@@ -30,9 +30,14 @@
         </tbody>
         
         <tbody>
-           
+
+            {% if request.user.is_authenticated != True %}  
                 <td><li><a href="/itineraires/accounts/login/"> Connexion </a></li></td>
-                    
+            {% endif  %}    
+
+            {% if request.user.is_authenticated %}  
+                <td><li><a href="/itineraires/accounts/logout/"> Déconnexion </a></li></td>
+            {% endif  %}
         </tbody>
 
     </table>

@@ -3,10 +3,10 @@ from django.shortcuts import render, get_list_or_404, get_object_or_404, redirec
 from .models import Itineraire, Sortie
 from django.http import HttpResponse
 from django.template import loader
-from django.contrib.auth.decorators import login_required
+
 from .forms import SortieForm
 
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
 
 def liste_itineraires(request):
@@ -27,7 +27,7 @@ def details_sortie(request, itineraire_id, sortie_id):
     
     return render(request, 'itineraires/details_sortie.html', {'sortie': sortie})
 
-@login_required()
+
 def nouvelle_sortie(request):
     
     if request.method == 'GET':
@@ -41,8 +41,6 @@ def nouvelle_sortie(request):
     return render(request, 'itineraires/nouvelle_sortie.html', {'form': form})
 
 
-
-@login_required()    
 def modif_sortie(request, sortie_id):
     
     sortie = Sortie.objects.get(pk=sortie_id)
@@ -59,4 +57,8 @@ def modif_sortie(request, sortie_id):
 def login_view(request):
     form = AuthenticationForm()
     return render(request, 'registration/login.html', {'form': form})
+
+def logout_view(request):
+    logout(request)
+    return liste_itineraires(request)
 
