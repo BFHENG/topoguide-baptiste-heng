@@ -1,4 +1,10 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'itineraires/style.css' %}">
+
+<h1>
 {% block title %}Informations sur la sortie de {{ sortie.utilisateur.username }} au {{ sortie.itineraire.titre }} {% endblock title%}
+</h1>
 
 {% block content %}
 
@@ -28,6 +34,8 @@
             <td>{{ sortie.difficulte}}</td>  
         </tr>
         </tbody>
+
+        
     </table>
 </div>
 

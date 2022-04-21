@@ -1,4 +1,10 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'itineraires/style.css' %}">
+
+<h1>
 {% block title %}Liste des sorties au {{ itineraire.titre }} {% endblock title%}
+</h1>
 
 {% block content %}
 
@@ -25,8 +31,6 @@
                     <td>{{itineraire.alt_min}}</td>
                     <td>{{itineraire.alt_max}}</td>
                     <td>{{itineraire.deniv_pos_cumul}}</td>
-                    <td>{{itineraire.deniv_neg_cumul}}</td>
-                    <td>{{itineraire.deniv_neg_cumul}}</td>
                     <td>{{itineraire.deniv_neg_cumul}}</td>
                     <td>{{itineraire.duree}}</td>
                     <td>{{itineraire.difficulte}}</td>

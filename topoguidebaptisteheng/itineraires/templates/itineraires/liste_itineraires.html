@@ -1,5 +1,10 @@
-{% block title %}Itineraires {% endblock title%}
+{% load static %}
 
+<link rel="stylesheet" type="text/css" href="{% static 'itineraires/style.css' %}">
+
+<h1>
+{% block title %}Itineraires {% endblock title%}
+</h1>
 
 {% block content %}
 
