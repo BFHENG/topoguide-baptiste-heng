@@ -3,6 +3,7 @@
 
 {% block content %}
 
+{# Page classique d'authentification#}
 <form method="post" action="{% url 'login' %}">
     {% csrf_token %}
     {{ form }}

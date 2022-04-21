@@ -5,13 +5,14 @@
 <form action="{% url 'nouvelle_sortie' %}" method="post" >
     {% csrf_token %}
     
+    {# Rend un form de Sortie pour entrer une nouvelle sortie#}
     {{form}}
-    <input type = "submit"> Add </button>
+    <input type = "submit"> Ajouter </button>
 </form>
 
+{# En cas d'annulation, on revient à la page principale #}
 <tbody>
     <td><li><a href="/itineraires/"> Annuler </a></li></td>
-    
 </tbody>
 
 

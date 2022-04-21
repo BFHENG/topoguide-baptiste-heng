@@ -7,34 +7,38 @@
     <h2>{{ Itineraire.titre }}</h2>
 </div>
 
-
 <div class="row">
     <table class="table table-striped">
+
         <thead>
         <tr>
+            {#Titres des informations essentielles d'un itinéraire #}
             <th>Nom</th>
             <th>Durée estimée (h)</th>
             <th>Difficulté estimée (sur 5) </th>
-
         </tr>
         </thead>
+
         <tbody>
+        
+        {# Pour chaque itinéraire, on rend les informations essentielles #}
         {% for itineraire in liste_itineraires %}
             <tr>
-                <td><li><a href="/itineraires/{{ itineraire.id }}/">{{ itineraire.titre }}</a></li></td>
-                <td>{{ itineraire.duree }}</td>
-                <td>{{ itineraire.difficulte }}</td>
+            <td><li><a href="/itineraires/{{ itineraire.id }}/">{{ itineraire.titre }}</a></li></td>
+            <td>{{ itineraire.duree }}</td>
+            <td>{{ itineraire.difficulte }}</td>
 
             </tr>
         {% endfor %}
         </tbody>
         
         <tbody>
-
+            {# Si l'utilisateur n'est pas connecté, le bouton de connexion apparait #}
             {% if request.user.is_authenticated != True %}  
                 <td><li><a href="/itineraires/accounts/login/"> Connexion </a></li></td>
             {% endif  %}    
 
+            {# Si l'utilisateur est connecté, le bouton de déconnexion apparait #}
             {% if request.user.is_authenticated %}  
                 <td><li><a href="/itineraires/accounts/logout/"> Déconnexion </a></li></td>
             {% endif  %}

@@ -1,4 +1,3 @@
-
 {% block title %}Modification sortie{% endblock title%}
 
 {% block content %}
@@ -6,10 +5,12 @@
 <form action="{% url 'modif_sortie' form.instance.id %}" method="post">
     {% csrf_token %}
     
+    {# Rend un form de Sortie pour modifier une sortie existante#}
     {{form}}
     <input type = "submit"> Modification </button>
 </form>
 
+{# En cas d'annulation, on revient à la page principale #}
 <tbody>
     <td><li><a href="/itineraires/"> Annuler </a></li></td>
 </tbody>

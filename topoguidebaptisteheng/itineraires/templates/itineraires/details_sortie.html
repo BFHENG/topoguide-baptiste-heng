@@ -1,32 +1,31 @@
-
 {% block title %}Informations sur la sortie de {{ sortie.utilisateur.username }} au {{ sortie.itineraire.titre }} {% endblock title%}
 
 {% block content %}
 
 <div class="row">
     <table class="table table-striped">
+
         <thead>
         <tr>
+            {#Titres des informations essentielles sur la sortie d'un utilisateur #}
             <th>Date </th>
             <th>Durée réelle</th>
             <th>Nombre de participants </th>
             <th>Type de randonneurs </th>
             <th>Météo </th>
             <th>Difficulté ressentie </th>
-
         </tr>
         </thead>
+
         <tbody>
-        
         <tr>
+            {#Informations essentielles sur la sortie de l'utilisateur #}
             <td>{{ sortie.date_sortie }}</td>
             <td>{{ sortie.duree}}</td>
             <td>{{ sortie.nombre_personnes}}</td>
             <td>{{ sortie.experience}}</td>
             <td>{{ sortie.meteo}}</td>
-            <td>{{ sortie.difficulte}}</td>
-
-                
+            <td>{{ sortie.difficulte}}</td>  
         </tr>
         </tbody>
     </table>
